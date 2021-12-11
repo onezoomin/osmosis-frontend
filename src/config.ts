@@ -379,12 +379,13 @@ export const IBCAssetInfos: {
 		coinMinimalDenom: 'umed',
 	},
 ];
+console.log('process.env.RPC_URL',process.env.RPC_URL);
 
 export const EmbedChainInfos: ChainInfoWithExplorer[] = [
 	{
-		rpc: 'https://rpc-osmosis.keplr.app',
-		rest: 'https://lcd-osmosis.keplr.app',
-		chainId: 'osmosis-1',
+		rpc: process.env.RPC_URL ??  'https://rpc-osmosis.keplr.app',
+		rest: process.env.LCD_URL ?? 'https://lcd-osmosis.keplr.app',
+		chainId: 'osmo-gitpod',
 		chainName: 'Osmosis',
 		stakeCurrency: {
 			coinDenom: 'OSMO',

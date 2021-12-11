@@ -28,6 +28,11 @@ import { Terms } from './terms';
 import { IBCHistoryNotifier } from './provider';
 import { AccountConnectionProvider } from 'src/hooks/account/context';
 
+console.log('GITPOD_WORKSPACE_URL',process.env.GITPOD_WORKSPACE_URL);
+
+console.log('process.env.RPC_URL',process.env.RPC_URL);
+
+
 dayjs.extend(relativeTime);
 dayjs.extend(duration);
 dayjs.extend(utc);

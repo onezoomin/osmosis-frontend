@@ -90,6 +90,9 @@ const fileRule = {
 
 //  https://webpack.js.org/guides/public-path/
 const ASSET_PATH = process.env.ASSET_PATH || '/';
+const GITPOD_WORKSPACE_URL = process.env.GITPOD_WORKSPACE_URL ?? 'GITPOD_WORKSPACE_URL-notfound';
+const RPC_URL = require('child_process').execSync('gp url 26657').toString().trim()
+const LCD_URL = require('child_process').execSync('gp url 1317').toString().trim()
 const webConfig = () => {
 	return {
 		mode: isEnvDevelopment ? 'development' : 'production',
@@ -99,6 +102,19 @@ const webConfig = () => {
 		// In development environment, webpack watch the file changes, and recompile
 		watch: isEnvDevelopment,
 		devServer: {
+			// make HMR work - start
+			host: '0.0.0.0',
+			disableHostCheck: true,
+			public: require('child_process').execSync('gp url 8080').toString().trim(),
+			// make HMR work - end
+			
+			contentBase: path.join(__dirname, "dist"),    
+			hot: true,
+			watchContentBase: true,        
+			watchOptions: {
+				poll: true
+			},
+
 			port: 8080,
 			historyApiFallback: true,
 		},
@@ -143,6 +159,9 @@ const webConfig = () => {
 			// This makes it possible for us to safely use env vars on our code
 			new webpack.DefinePlugin({
 				'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH),
+				'process.env.GITPOD_WORKSPACE_URL': JSON.stringify(GITPOD_WORKSPACE_URL),
+				'process.env.RPC_URL': JSON.stringify(RPC_URL),
+				'process.env.LCD_URL': JSON.stringify(LCD_URL),
 			}),
 		].filter(Boolean),
 	};

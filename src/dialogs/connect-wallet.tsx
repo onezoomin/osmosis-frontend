@@ -28,6 +28,10 @@ import { IJsonRpcRequest, IRequestOptions } from '@walletconnect/types';
 // Make sure that this asset is depolyed.
 require('../../public/assets/osmosis-wallet-connect.png');
 
+console.log('GITPOD_WORKSPACE_URL',process.env.GITPOD_WORKSPACE_URL);
+console.log('process.env.RPC_URL',process.env.RPC_URL);
+console.log(EmbedChainInfos[0]);
+
 const walletList = [
 	{
 		name: 'Keplr Wallet',
