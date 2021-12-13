@@ -386,7 +386,7 @@ export const EmbedChainInfos: ChainInfoWithExplorer[] = [
 		rpc: process.env.RPC_URL ??  'https://rpc-osmosis.keplr.app',
 		rest: process.env.LCD_URL ?? 'https://lcd-osmosis.keplr.app',
 		chainId: 'osmo-gitpod',
-		chainName: 'Osmosis',
+		chainName: 'Osmosis Gitpod',
 		stakeCurrency: {
 			coinDenom: 'OSMO',
 			coinMinimalDenom: 'uosmo',
